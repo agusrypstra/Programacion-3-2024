@@ -87,7 +87,14 @@ public class GrafoDirigido<T> implements Grafo<T> {
     }
     @Override
     public Iterator<Integer> obtenerAdyacentes(int verticeId) {
-        // TODO Auto-generated method stub
+        Iterator<Arco<T>> arcos = vertices.get(verticeId).iterator();
+        if (vertices.containsKey(verticeId)){
+            LinkedList<Integer> adyacentes = new LinkedList<>();
+            while (arcos.hasNext()){
+                adyacentes.add(arcos.next().getVerticeDestino());
+            }
+            return adyacentes.iterator();
+        }
         return null;
     }
     @Override
